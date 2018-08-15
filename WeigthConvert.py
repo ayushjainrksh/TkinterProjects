@@ -15,9 +15,10 @@ def kgconvert():
     t3.delete(1.0,END)
     t3.insert(END,ounces)
 
+
 window.geometry("450x100");
 
-m1=Message(window, text="Weight(in kg)")
+m1=Messages(window, text="Weight(in kg)")
 m1.grid(row=0, column=0, sticky=W)
 
 val = StringVar()
