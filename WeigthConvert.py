@@ -2,9 +2,9 @@ from tkinter import *
 window = Tk()
 
 def kgconvert():
-    grams = str(float(val.get())*1000.0) + " grams"
-    pounds = str(float(val.get())*2.20462) + " pounds"
-    ounces = str(float(val.get())*35.274) + " ounces"
+    grams = str("%.3f" % (float(val.get())*1000.0)) + " grams"
+    pounds = str("%.3f" % (float(val.get())*2.20462)) + " pounds"
+    ounces = str("%.3f" % (float(val.get())*35.274)) + " ounces"
 
     t1.delete(1.0,END)
     t1.insert(END, grams)
