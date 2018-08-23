@@ -1,6 +1,20 @@
 from tkinter import *
 import backend
 
+def get_selected_row(event):
+    global selected_row
+    index=list1.curselection()
+    selected_row = list1.get(index)
+    t1.delete(0,END)
+    t1.insert(END,selected_row[1])
+    t2.delete(0,END)
+    t2.insert(END,selected_row[2])
+    t3.delete(0,END)
+    t3.insert(END,selected_row[3])
+    t4.delete(0,END)
+    t4.insert(END,selected_row[4])
+
+
 def view_command():
     list1.delete(0,END)
     for row in backend.view():
@@ -16,8 +30,12 @@ def insert_command():
     list1.delete(0,END)
     list1.insert(END,title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
 
-# def update_command():
-    # backend.update()
+def delete_command():
+    backend.delete(selected_row[0])
+    list1.delete(0,END)
+    view_command()
+
+    # list1.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
 
 window = Tk()
 
@@ -54,7 +72,7 @@ b3 = Button(text="Add entry", width=12, command=insert_command)
 b3.grid(row=4, column=3)
 b4 = Button(text="Update", width=12)
 b4.grid(row=5, column=3)
-b5 = Button(text="Delete", width=12)
+b5 = Button(text="Delete", width=12, command=delete_command)
 b5.grid(row=6, column=3)
 b6 = Button(text="Close", width=12)
 b6.grid(row=7, column=3)
@@ -66,5 +84,7 @@ sb1=Scrollbar(window)
 sb1.grid(row=2, column=2,rowspan=6)
 list1.configure(yscrollcommand = sb1.set)
 sb1.configure(command=list1.yview)
+
+list1.bind('<<ListboxSelect>>',get_selected_row)
 
 window.mainloop()
