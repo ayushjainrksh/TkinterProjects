@@ -2,17 +2,20 @@ from tkinter import *
 import backend
 
 def get_selected_row(event):
-    global selected_row
-    index=list1.curselection()
-    selected_row = list1.get(index)
-    t1.delete(0,END)
-    t1.insert(END,selected_row[1])
-    t2.delete(0,END)
-    t2.insert(END,selected_row[2])
-    t3.delete(0,END)
-    t3.insert(END,selected_row[3])
-    t4.delete(0,END)
-    t4.insert(END,selected_row[4])
+    try:
+        global selected_row
+        index=list1.curselection()
+        selected_row = list1.get(index)
+        t1.delete(0,END)
+        t1.insert(END,selected_row[1])
+        t2.delete(0,END)
+        t2.insert(END,selected_row[2])
+        t3.delete(0,END)
+        t3.insert(END,selected_row[3])
+        t4.delete(0,END)
+        t4.insert(END,selected_row[4])
+    except TclError:
+        pass
 
 
 def view_command():
