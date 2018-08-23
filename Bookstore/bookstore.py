@@ -35,7 +35,11 @@ def delete_command():
     list1.delete(0,END)
     view_command()
 
-    # list1.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+def update_command():
+    backend.update(selected_row[0],title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+    list1.delete(0,END)
+    view_command()
+
 
 window = Tk()
 
@@ -70,7 +74,7 @@ b2 = Button(text="Search entry", width=12, command=search_command)
 b2.grid(row=3, column=3)
 b3 = Button(text="Add entry", width=12, command=insert_command)
 b3.grid(row=4, column=3)
-b4 = Button(text="Update", width=12)
+b4 = Button(text="Update", width=12, command=update_command)
 b4.grid(row=5, column=3)
 b5 = Button(text="Delete", width=12, command=delete_command)
 b5.grid(row=6, column=3)
